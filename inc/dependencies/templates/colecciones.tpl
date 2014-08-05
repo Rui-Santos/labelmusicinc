@@ -40,11 +40,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Crear colecci&oacute;n</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>
-	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li class="active"><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
-	<li><a href="{$link}">Lo ultimo</a></li>
+	<li class="active"><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -337,11 +339,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Mis colecciones</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>
-	<li class="active"><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li class="active"><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
-	<li><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -445,11 +449,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>
-	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
-	<li><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="{$link}">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
 </div>
@@ -786,10 +792,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>
-	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '
 	<li><a href="{$link}">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
@@ -1097,7 +1106,7 @@ echo '</div>
 
 <div class="col-xs-12 col-sm-4 pull-right text-xs-center">
 <div class="user_info">
-<a href="javascript:;"><div class="preview_picture"><img src="' .$song['profile_picture'].'" /></div>
+<a href="{$link}@'.$song['user_username'].'"><div class="preview_picture"><img src="' .$song['profile_picture'].'" /></div>
 <h2>'.$song['user_fullname'].'</h2></a>
 </div>
 <span class="clearfix"></span>

@@ -126,11 +126,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Lo ultimo</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>
-	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
-	<li class="active"><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li class="active"><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -185,7 +187,7 @@ echo '<div class="container">
 	<li><a href="#view/collections">Colecciones</a></li>
 </ul></div>
 </div>
-
+{if ($is_moderator=="true")}
 <div class="chose col-sm-4 col-md-3 col-xs-6">
 <a href="" class="curchoice">Publicar <b class="caret text-muted"></b></a>
 <div class="choseoptions"><ul>
@@ -194,6 +196,7 @@ echo '<div class="container">
 	<!-- <li><a href="#view/cosllectionss">Subir video</a></li> -->
 </ul></div>
 </div>
+{/if}
 <span class="clearfix"></span>
 </div>
 

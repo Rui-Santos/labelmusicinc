@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 04:26:21
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:07:22
          compiled from "inc\dependencies\templates\colecciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24282537ae568844e41-73111217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b9fbc467a80c53f186f5023b1d61eb7bd982b474' => 
     array (
       0 => 'inc\\dependencies\\templates\\colecciones.tpl',
-      1 => 1407184248,
+      1 => 1407215240,
       2 => 'file',
     ),
   ),
@@ -81,16 +81,18 @@ echo '
 <a href="" class="curchoice">Crear colecci&oacute;n</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>
@@ -412,16 +414,18 @@ echo '
 <a href="" class="curchoice">Mis colecciones</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>
-	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>
@@ -534,16 +538,18 @@ echo '
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
@@ -900,15 +906,18 @@ echo '
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>';
+	if($is_moderator=="true"){
+	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>
+">Crear colecci&oacute;n</a></li>';
+	}
+	echo '
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
@@ -1230,7 +1239,8 @@ echo '</div>
 
 <div class="col-xs-12 col-sm-4 pull-right text-xs-center">
 <div class="user_info">
-<a href="javascript:;"><div class="preview_picture"><img src="' .$song['profile_picture'].'" /></div>
+<a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+@'.$song['user_username'].'"><div class="preview_picture"><img src="' .$song['profile_picture'].'" /></div>
 <h2>'.$song['user_fullname'].'</h2></a>
 </div>
 <span class="clearfix"></span>
