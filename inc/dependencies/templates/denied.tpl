@@ -63,9 +63,9 @@ position: relative;
 <img width="60" src="//localhost/labelmusicinc/assets/image/logo-o.png">
 <div style="display:inline-block; vertical-align: middle;" >
 <div id="name" >Label Music Inc.</div>
-<div id="msg" >Actualmente no se puede acceder a la a este contenido porque no tienes los privilegios necesarios.</div>
+<div id="msg" >Actualmente no se puede acceder a este contenido porque no tienes los privilegios necesarios.</div>
 <div id="suggestions" >
-  <span><a href="//localhost/labelmusicinc/">Volver a inicio</a></span>
+  <span><a href="javascript:window.location=window.location.protocol+document.domain;">Volver a inicio</a></span>
 </div>
 </div>
 </div>

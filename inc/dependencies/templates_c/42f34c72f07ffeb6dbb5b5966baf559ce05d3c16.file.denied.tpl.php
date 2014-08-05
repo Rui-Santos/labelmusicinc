@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-07-01 06:26:05
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:27:51
          compiled from "inc\dependencies\templates\denied.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22932537f8d3bb3ca96-27544497%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42f34c72f07ffeb6dbb5b5966baf559ce05d3c16' => 
     array (
       0 => 'inc\\dependencies\\templates\\denied.tpl',
-      1 => 1404195963,
+      1 => 1407216411,
       2 => 'file',
     ),
   ),
@@ -84,9 +84,9 @@ position: relative;
 <img width="60" src="//localhost/labelmusicinc/assets/image/logo-o.png">
 <div style="display:inline-block; vertical-align: middle;" >
 <div id="name" >Label Music Inc.</div>
-<div id="msg" >Actualmente no se puede acceder a la a este contenido porque no tienes los privilegios necesarios.</div>
+<div id="msg" >Actualmente no se puede acceder a este contenido porque no tienes los privilegios necesarios.</div>
 <div id="suggestions" >
-  <span><a href="//localhost/labelmusicinc/">Volver a inicio</a></span>
+  <span><a href="javascript:window.location=window.location.domain;">Volver a inicio</a></span>
 </div>
 </div>
 </div>
