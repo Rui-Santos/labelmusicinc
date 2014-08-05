@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:10:59
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:18:24
          compiled from "inc\dependencies\templates\cuenta.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18900536fade4cfd086-92703540%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '439cd334ded3a4fe3cdc623f3ea685fa969051cc' => 
     array (
       0 => 'inc\\dependencies\\templates\\cuenta.tpl',
-      1 => 1407215353,
+      1 => 1407215903,
       2 => 'file',
     ),
   ),
@@ -999,12 +999,14 @@ if($usera['vimeo_url']!=""){
           <a class="location"><i class="ion-android-location"></i> '.$country[$usera['country']].'</a>
         </li>';
 
+		if($usera['accounttype']>0){
         if($loadowner){
         	echo '<li><a href="'.$link.'filemanager#tracks"><i class="ion-music-note"></i> <span class="count">'.$usera['songs'].'</span> <span class="meta">canciones</span></a></li>
 		<li><a href="'.$link.'filemanager"><i class="ion-folder"></i> <span class="count">'.$usera['collections'].'</span> <span class="meta">colecciones</span></a></li>';
         }else{
         echo '<li><a href="'.$link.'colecciones/#view/songs/user-'.$usera['id'].'"><i class="ion-music-note"></i> <span class="count">'.$usera['songs'].'</span> <span class="meta">canciones</span></a></li>
 		<li><a href="'.$link.'colecciones/#view/'.$usera['id'].'"><i class="ion-folder"></i> <span class="count">'.$usera['collections'].'</span> <span class="meta">colecciones</span></a></li>';
+        }
         }
 
     echo '</ul>';
@@ -1041,6 +1043,7 @@ echo '</div>
 
 <div class="container _feed_container" style="min-height:50px">';
 
+if($usera['accounttype']>0){
 $collections = Collections::getcollections($usera['id'],0,4);
 if($collections!=false){
 for($i=0;$i<count($collections);$i++){
@@ -1055,6 +1058,7 @@ echo '
 </div>
 ';
 
+}
 
 /** ********************************************************************************
 // show actions

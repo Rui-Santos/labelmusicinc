@@ -46,7 +46,7 @@ class User{
 		$q="";
 		$byid=is_numeric($user);
 		// if($byid){
-			$q=mysqli_query($mysql,"SELECT user_id as uid, user_password, user_email, user_fullname, user_range, user_username, user_country_id, user_bio, (select uploads.upload_file_unique from uploads INNER JOIN user ON uploads.upload_id=user.user_profile_photo_id WHERE uploads.upload_user_id=user_id) as upload_file_unique, (select count(*) from posts where post_user_id=uid) as songs, (select count(*) from collections where collection_user_id=uid) as collections, user_profile_photo_id, youtube_url, website_url, facebook_url, twitter_url, soundcloud_url, vimeo_url FROM user WHERE user.user_id='{$user}' OR user.user_username='{$user}'");
+			$q=mysqli_query($mysql,"SELECT user_id as uid, user_password, user_range, user_email, user_fullname, user_range, user_username, user_country_id, user_bio, (select uploads.upload_file_unique from uploads INNER JOIN user ON uploads.upload_id=user.user_profile_photo_id WHERE uploads.upload_user_id=user_id) as upload_file_unique, (select count(*) from posts where post_user_id=uid) as songs, (select count(*) from collections where collection_user_id=uid) as collections, user_profile_photo_id, youtube_url, website_url, facebook_url, twitter_url, soundcloud_url, vimeo_url FROM user WHERE user.user_id='{$user}' OR user.user_username='{$user}'");
 		// }else{
 		// 	$q=mysqli_query($mysql,"SELECT user_id as uid, user_password, user_email, user_fullname, user_range, user_username, user_country_id, user_bio, (select uploads.upload_file_unique from uploads INNER JOIN user ON uploads.upload_id=user. WHERE uploads.upload_user_id=uid) as upload_file_unique, (select count(*) from posts where post_user_id=uid) as songs, (select count(*) from collections where collection_user_id=uid) as collections, user_profile_photo_id FROM user WHERE user.user_username='{$user}'");
 		// }
@@ -64,6 +64,7 @@ class User{
 					'country'=>			$row['user_country_id'],
 					'songs'=>			$row['songs'],
 					'collections'=>		$row['collections'],
+					'accounttype'=>		$row['user_range'],
 					'photo_id'=>		$row['user_profile_photo_id'],
 					'website_url'=>		$row['website_url'],
 					'facebook_url'=>	$row['facebook_url'],
