@@ -65,7 +65,7 @@ position: relative;
 <div id="name" >Label Music Inc.</div>
 <div id="msg" >Actualmente no se puede acceder a este contenido porque no tienes los privilegios necesarios.</div>
 <div id="suggestions" >
-  <span><a href="javascript:window.location=window.location.protocol+document.domain;">Volver a inicio</a></span>
+  <span><a href="javascript:window.location=window.location.protocol + '//' + document.domain;">Volver a inicio</a></span>
 </div>
 </div>
 </div>

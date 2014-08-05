@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:18:24
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:45:26
          compiled from "inc\dependencies\templates\cuenta.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18900536fade4cfd086-92703540%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '439cd334ded3a4fe3cdc623f3ea685fa969051cc' => 
     array (
       0 => 'inc\\dependencies\\templates\\cuenta.tpl',
-      1 => 1407215903,
+      1 => 1407221124,
       2 => 'file',
     ),
   ),
@@ -31,6 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bi_year' => 0,
     'login_link_action' => 0,
     'register_link' => 0,
+    'is_moderator' => 0,
     'collections_link' => 0,
     'collections_link_my_collections' => 0,
     'collections_link_new_collection' => 0,
@@ -921,17 +922,18 @@ echo '<div class="__intro _affixer affix-top" data-spy="affix" data-offset-top="
 cuenta">Perfil</a></li>';
 	if($loadowner){ echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 cuenta/editar">Editar perfil</a></li>';}
-	if($is_moderator=="true"){
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+	echo '
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>

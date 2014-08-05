@@ -40,13 +40,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Crear colecci&oacute;n</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>
+	{if ($is_moderator=="true")}
+	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li class="active"><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="{$link}">Lo ultimo</a></li>
+	<li class="active"><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	{/if}
+	<li><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -281,7 +281,7 @@ echo '<div class="alert alert-info alert-dismissable __s_alert_g" style="display
 
 
 
-{if ($is_user=="true")}
+{if ($is_user=="true" && $is_moderator!="false")}
 {php}
 require_once('inc/class.php');
 require_once('inc/dependencies/class/perfil.php');
@@ -339,13 +339,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Mis colecciones</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li class="active"><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>
+	{if ($is_moderator=="true")}
+	<li class="active"><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	{/if}
+	<li><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -369,8 +369,6 @@ require_once('inc/class.php');
 global $path, $user, $user_id, $collections_link, $collections_link_id, $link, $categorias;
 $limit = 8;
 $collections = Collections::getcollections($user_id,0,$limit);
-
-
 
 for($i=0;$i<count($collections);$i++){
 echo '<div class="col-xs-6 col-md-3 __feature_oi __content_collection"><div class="col-xs-12"><div class="__feature_oi_cover"><div class="__feature_oi_info"><a href="'.$collections_link.$collections_link_id.$collections[$i]['id'].'"><div class="__b_a" style="border-bottom: 1px solid #FCECEC;">'.$collections[$i]['name'].'<br /><small>'.$categorias[$collections[$i]['category']].'</small></div></a><div style="margin: 7px; text-align: left"><a href="'.$link.'colecciones/editar/coleccion-'.$collections[$i]['id'].'" class="btn btn-default btn-xs">EDITAR</a>&nbsp;<a href="'.$link.'colecciones/eliminar/coleccion-'.$collections[$i]['id'].'" class="btn btn-cancel btn-xs pull-right">&times;</a></div><span class="clearfix"></span></div></div></div></div>';
@@ -410,7 +408,7 @@ echo '<span class="clearfix"></span><div class="collection_more text-center"><a 
 
 
 
-{if ($is_user=="true")}
+{if ($is_user=="true" && $is_moderator!="false")}
 {php}
 require_once('inc/class.php');
 require_once('inc/dependencies/class/perfil.php');
@@ -449,13 +447,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>
+	{if ($is_moderator=="true")}
+	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	{/if}
+	<li><a href="{$link}">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
 </div>
@@ -502,7 +500,7 @@ $id = str_replace('coleccion-', '', $id);
 
 
 $c=Collections::fetch($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 
 
 
@@ -673,7 +671,7 @@ if($uc!=false){
 
 //sleep(500);
 $c=Collections::fetchSongInfo($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 
 $temp = explode(".", $c['filename']);
 $extension = strtolower(end($temp));
@@ -753,7 +751,7 @@ echo '
 
 
 
-{if ($is_user=="true")}
+{if ($is_user=="true" && $is_moderator!="false")}
 {php}
 require_once('inc/class.php');
 require_once('inc/dependencies/class/perfil.php');
@@ -792,13 +790,12 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>
+	{if ($is_moderator=="true")}
+	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
-	}
-	echo '
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	{/if}
 	<li><a href="{$link}">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
@@ -825,7 +822,7 @@ if(isset($_POST['confirm']) && $_POST['confirm']==true){
 	Collections::removeItem($id, true);
 }
 $c=Collections::fetch($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 echo '<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 _p">
 <div class="col-sm-12 _mTb">
 <h3>Estas seguro de realizar esta acci&oacute;n?</h3>
@@ -856,7 +853,7 @@ if(isset($_POST['confirm']) && $_POST['confirm']==true){
 	Collections::removeItem($id, false);
 }
 $c=Collections::fetchSongInfo($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 echo '<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 _p">
 <div class="col-sm-12 _mTb">
 <h3>Estas seguro de realizar esta acci&oacute;n?</h3>
@@ -1041,7 +1038,7 @@ echo '<span class="clearfix"></span><div class="song_view_song_info">
 <div class="form-group">
 ';
 
-if($is_user!=false && ($user_id==$song['user_id'] || $is_moderator!=false)){
+if($is_user!=false && ($user_id==$song['user_id'] || $is_moderator!="false")){
 
 echo '
 
@@ -1260,7 +1257,7 @@ echo '">
 <div class="col-sm-6 text-right text-xs-center">
 <div class="form-group">';
 
-if($is_user!=false && ($user_id==$collection['user_id'] || $is_moderator!=false)){
+if($is_user!=false && ($user_id==$collection['user_id'] || $is_moderator!="false")){
 
 echo '
 

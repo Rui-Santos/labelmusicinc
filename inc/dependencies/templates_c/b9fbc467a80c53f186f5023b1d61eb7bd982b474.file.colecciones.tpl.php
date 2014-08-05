@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:07:22
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:44:03
          compiled from "inc\dependencies\templates\colecciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24282537ae568844e41-73111217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b9fbc467a80c53f186f5023b1d61eb7bd982b474' => 
     array (
       0 => 'inc\\dependencies\\templates\\colecciones.tpl',
-      1 => 1407215240,
+      1 => 1407221042,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'show' => 0,
     'is_user' => 0,
     'link' => 0,
+    'is_moderator' => 0,
     'collections_link' => 0,
     'collections_link_my_collections' => 0,
     'collections_link_new_collection' => 0,
@@ -81,18 +82,18 @@ echo '
 <a href="" class="curchoice">Crear colecci&oacute;n</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>
@@ -354,7 +355,7 @@ $_smarty_tpl->tpl_vars['curr_id']->_loop = true;
 
 
 
-<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true")) {?>
+<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true"&&$_smarty_tpl->tpl_vars['is_moderator']->value!="false")) {?>
 <?php $_smarty_tpl->smarty->_tag_stack[] = array('php', array()); $_block_repeat=true; echo smarty_php_tag(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 
 require_once('inc/class.php');
@@ -414,18 +415,18 @@ echo '
 <a href="" class="curchoice">Mis colecciones</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>
@@ -454,8 +455,6 @@ require_once('inc/class.php');
 global $path, $user, $user_id, $collections_link, $collections_link_id, $link, $categorias;
 $limit = 8;
 $collections = Collections::getcollections($user_id,0,$limit);
-
-
 
 for($i=0;$i<count($collections);$i++){
 echo '<div class="col-xs-6 col-md-3 __feature_oi __content_collection"><div class="col-xs-12"><div class="__feature_oi_cover"><div class="__feature_oi_info"><a href="'.$collections_link.$collections_link_id.$collections[$i]['id'].'"><div class="__b_a" style="border-bottom: 1px solid #FCECEC;">'.$collections[$i]['name'].'<br /><small>'.$categorias[$collections[$i]['category']].'</small></div></a><div style="margin: 7px; text-align: left"><a href="'.$link.'colecciones/editar/coleccion-'.$collections[$i]['id'].'" class="btn btn-default btn-xs">EDITAR</a>&nbsp;<a href="'.$link.'colecciones/eliminar/coleccion-'.$collections[$i]['id'].'" class="btn btn-cancel btn-xs pull-right">&times;</a></div><span class="clearfix"></span></div></div></div></div>';
@@ -497,7 +496,7 @@ echo '<span class="clearfix"></span><div class="collection_more text-center"><a 
 
 
 
-<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true")) {?>
+<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true"&&$_smarty_tpl->tpl_vars['is_moderator']->value!="false")) {?>
 <?php $_smarty_tpl->smarty->_tag_stack[] = array('php', array()); $_block_repeat=true; echo smarty_php_tag(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 
 require_once('inc/class.php');
@@ -538,18 +537,18 @@ echo '
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
 </ul></div>
@@ -600,7 +599,7 @@ $id = str_replace('coleccion-', '', $id);
 
 
 $c=Collections::fetch($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 
 
 
@@ -779,7 +778,7 @@ colecciones/song/'.$id.'" class="btn btn-default">volver</a>
 
 //sleep(500);
 $c=Collections::fetchSongInfo($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 
 $temp = explode(".", $c['filename']);
 $extension = strtolower(end($temp));
@@ -865,7 +864,7 @@ colecciones\';},500);</script>
 
 
 
-<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true")) {?>
+<?php if (($_smarty_tpl->tpl_vars['is_user']->value=="true"&&$_smarty_tpl->tpl_vars['is_moderator']->value!="false")) {?>
 <?php $_smarty_tpl->smarty->_tag_stack[] = array('php', array()); $_block_repeat=true; echo smarty_php_tag(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 
 require_once('inc/class.php');
@@ -906,18 +905,17 @@ echo '
 <a href="" class="curchoice">Editar</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 	<li class="active"><a href="">Editar</a></li>
@@ -947,7 +945,7 @@ if(isset($_POST['confirm']) && $_POST['confirm']==true){
 	Collections::removeItem($id, true);
 }
 $c=Collections::fetch($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 echo '<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 _p">
 <div class="col-sm-12 _mTb">
 <h3>Estas seguro de realizar esta acci&oacute;n?</h3>
@@ -980,7 +978,7 @@ if(isset($_POST['confirm']) && $_POST['confirm']==true){
 	Collections::removeItem($id, false);
 }
 $c=Collections::fetchSongInfo($id);
-if($c!=false && ($c['user_id']==$user_id || $is_moderator!=false)){
+if($c!=false && ($c['user_id']==$user_id || $is_moderator!="false")){
 echo '<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 _p">
 <div class="col-sm-12 _mTb">
 <h3>Estas seguro de realizar esta acci&oacute;n?</h3>
@@ -1170,7 +1168,7 @@ echo '<span class="clearfix"></span><div class="song_view_song_info">
 <div class="form-group">
 ';
 
-if($is_user!=false && ($user_id==$song['user_id'] || $is_moderator!=false)){
+if($is_user!=false && ($user_id==$song['user_id'] || $is_moderator!="false")){
 
 echo '
 
@@ -1397,7 +1395,7 @@ echo '">
 <div class="col-sm-6 text-right text-xs-center">
 <div class="form-group">';
 
-if($is_user!=false && ($user_id==$collection['user_id'] || $is_moderator!=false)){
+if($is_user!=false && ($user_id==$collection['user_id'] || $is_moderator!="false")){
 
 echo '
 

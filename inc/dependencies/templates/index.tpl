@@ -126,13 +126,13 @@ echo '
 <div class="chose col-sm-3 pull-right col-xs-6">
 <a href="" class="curchoice">Lo ultimo</a>
 <div class="choseoptions"><ul>
-	<li><a href="{$link}cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
+	<li><a href="{$link}cuenta">Perfil</a></li>
+	{if ($is_moderator=="true")}
+	<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li class="active"><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
+	{/if}
+	<li class="active"><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
@@ -146,15 +146,13 @@ echo '
 <div class="small_profile">
 <h4><a href="'.$link.'@'.$usera['username'].'" class="username">'.$usera['name'].'</a> 
 <a href="'.$link.'cuenta/editar" class="editlink"><small>Editar perfil</small></a></h4>
-
+{if ($is_moderator=="true")}
 <div class="btn-group btn-group-vertical col-xs-12">
-
 <a href="'.$link.'colecciones/#view/songs/user-'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">canciones</span> <span class="badge">'.$usera['songs'].'</span></a>
 <a href="'.$link.'colecciones/#view/'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">colecciones</span> <span class="badge">'.$usera['collections'].'</span></a>
 <a href="'.$link.'filemanager" class="btn btn-secondary"> <span class="meta">mis archivos</span></a>
-
 </div>
-
+{/if}
 </div>';
 
 }else{
@@ -218,8 +216,14 @@ echo '<div class="container">
 </div>
 
 
-
+{if ($is_moderator=="true")}
 <script type="text/javascript">
 if(window.location.href.indexOf('#')<0) window.location.href = '#view/activity';
 </script>
+{else}
+<script type="text/javascript">
+if(window.location.href.indexOf('#')<0) window.location.href = '#view/songs';
+</script>
+{/if}
+
 {/if}

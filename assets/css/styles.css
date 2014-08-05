@@ -1,0 +1,12 @@
+<?php
+
+header('Content-type: text/css');
+
+include_once("bootstrap.min.css");
+include_once("font-awesome.min.css");
+include_once("jquery-ui.min.css");
+include_once("ionicons.min.css");
+include_once("jquery.mCustomScrollbar.css");
+include_once("all.css");
+
+?>

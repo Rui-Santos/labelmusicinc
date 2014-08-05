@@ -9,20 +9,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <link href="{$path}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{$path}css/font-awesome.min.css" rel="stylesheet">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{$path}css/styles.css" />
 
-    <link rel="stylesheet" type="text/css" href="{$path}css/jquery-ui.min.css" />
-    <link href="{$path}css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{$path}css/all.css" />
-    <link rel="stylesheet" href="{$path}css/jquery.mCustomScrollbar.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if IE]>
-      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
 	{$metaInfo}
    </head>

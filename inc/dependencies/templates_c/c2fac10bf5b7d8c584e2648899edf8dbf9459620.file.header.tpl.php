@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-04 05:26:00
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:12:52
          compiled from "inc\dependencies\templates\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:29090536ce559083b43-01705001%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c2fac10bf5b7d8c584e2648899edf8dbf9459620' => 
     array (
       0 => 'inc\\dependencies\\templates\\header.tpl',
-      1 => 1407129956,
+      1 => 1407219169,
       2 => 'file',
     ),
   ),
@@ -35,26 +35,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/font-awesome.min.css" rel="stylesheet">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+css/styles.css" />
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/jquery-ui.min.css" />
-    <link href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/ionicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/all.css" />
-    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-css/jquery.mCustomScrollbar.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if IE]>
-      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
 	<?php echo $_smarty_tpl->tpl_vars['metaInfo']->value;?>
 

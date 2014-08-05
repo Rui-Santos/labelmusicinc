@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:05:31
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:40:39
          compiled from "inc\dependencies\templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28211536ce5596dc544-52236376%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c15ae3a8012a3d4149e868764f97d9b3e49fd23' => 
     array (
       0 => 'inc\\dependencies\\templates\\index.tpl',
-      1 => 1407214971,
+      1 => 1407220837,
       2 => 'file',
     ),
   ),
@@ -21,10 +21,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'is_user' => 0,
     'link' => 0,
+    'is_moderator' => 0,
     'collections_link' => 0,
     'collections_link_my_collections' => 0,
     'collections_link_new_collection' => 0,
-    'is_moderator' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -160,18 +160,18 @@ echo '
 <a href="" class="curchoice">Lo ultimo</a>
 <div class="choseoptions"><ul>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>';
-	if($is_moderator=="true"){
-	echo '<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+cuenta">Perfil</a></li>
+	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
 ">Mis colecciones</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 filemanager">Archivos</a></li>
 	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
 <?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>';
-	}
-	echo '<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
+">Crear colecci&oacute;n</a></li>
+	<?php }?>
+	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
 ">Lo ultimo</a></li>
 </ul></div>
 </div>
@@ -186,15 +186,13 @@ filemanager">Archivos</a></li>
 <div class="small_profile">
 <h4><a href="'.$link.'@'.$usera['username'].'" class="username">'.$usera['name'].'</a> 
 <a href="'.$link.'cuenta/editar" class="editlink"><small>Editar perfil</small></a></h4>
-
+<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
 <div class="btn-group btn-group-vertical col-xs-12">
-
 <a href="'.$link.'colecciones/#view/songs/user-'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">canciones</span> <span class="badge">'.$usera['songs'].'</span></a>
 <a href="'.$link.'colecciones/#view/'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">colecciones</span> <span class="badge">'.$usera['collections'].'</span></a>
 <a href="'.$link.'filemanager" class="btn btn-secondary"> <span class="meta">mis archivos</span></a>
-
 </div>
-
+<?php }?>
 </div>';
 
 }else{
@@ -261,8 +259,14 @@ addsong">Subir canci&oacute;n</a></li>
 </div>
 
 
-
+<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
 <script type="text/javascript">
 if(window.location.href.indexOf('#')<0) window.location.href = '#view/activity';
 </script>
+<?php } else { ?>
+<script type="text/javascript">
+if(window.location.href.indexOf('#')<0) window.location.href = '#view/songs';
+</script>
+<?php }?>
+
 <?php }?><?php }} ?>

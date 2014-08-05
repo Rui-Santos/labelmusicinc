@@ -428,6 +428,7 @@ class Collections{
 		$data_contructor = "";
 		if(count($data)>0){
 			foreach ($data as $clave => $valor) {
+				if($clave=="collection_name") $valor = htmlentities($valor);
 			    $data_contructor .= "$clave='$valor',";
 			}
 			$data_contructor = substr($data_contructor, 0, (strlen($data_contructor)-1));
