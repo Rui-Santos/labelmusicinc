@@ -1,0 +1,8 @@
+
+RewriteEngine on
+#RewriteRule   ^%{DOCUMENT_ROOT}/assets/js/(.*)    /abc/abc/$1  [R]
+
+
+<FilesMatch "\.(js)$">
+	AddHandler application/x-httpd-php .js
+</FilesMatch>
