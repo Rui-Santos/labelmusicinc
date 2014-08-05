@@ -72,7 +72,7 @@ class User{
 					'youtube_url'=>		$row['youtube_url'],
 					'vimeo_url'=>		$row['vimeo_url'],
 					'bio'=>				($row['user_bio']!=null ? $row['user_bio'] : ""),
-					'profile_picture'=>	($row['upload_file_unique']!=null ? $link.'usercontent/media/'.$row['uid'].'/thumb_'.$row['upload_file_unique'] : $link.'assets/image/_usr_pc.jpg')
+					'profile_picture'=>	($row['user_profile_photo_id']!=null && $row['user_profile_photo_id']!=0 ? ($row['upload_file_unique']!=null ? $link.'usercontent/media/'.$row['uid'].'/thumb_'.$row['upload_file_unique'] : $link.'assets/image/_usr_pc.jpg') : $link.'assets/image/_usr_pc.jpg')
 					);
 			}
 			mysqli_free_result($q);
