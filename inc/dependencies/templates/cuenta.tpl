@@ -832,10 +832,12 @@ echo '<div class="__intro _affixer affix-top" data-spy="affix" data-offset-top="
 <div class="choseoptions"><ul>
 	<li class="active"><a href="{$link}cuenta">Perfil</a></li>';
 	if($loadowner){ echo '<li><a href="{$link}cuenta/editar">Editar perfil</a></li>';}
+	if($is_moderator=="true"){
 	echo '<li><a href="{$collections_link}{$collections_link_my_collections}">Mis colecciones</a></li>
 	<li><a href="{$link}filemanager">Archivos</a></li>
-	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>
-	<li><a href="{$link}">Lo ultimo</a></li>
+	<li><a href="{$collections_link}{$collections_link_new_collection}">Crear colecci&oacute;n</a></li>';
+	}
+	echo '<li><a href="{$link}">Lo ultimo</a></li>
 </ul></div>
 </div>
 </div>
