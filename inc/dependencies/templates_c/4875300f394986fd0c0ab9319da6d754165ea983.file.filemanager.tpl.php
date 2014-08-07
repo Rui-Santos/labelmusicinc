@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 05:43:05
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-07 04:58:07
          compiled from "inc\dependencies\templates\filemanager.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2833053d477631faf60-97869596%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4875300f394986fd0c0ab9319da6d754165ea983' => 
     array (
       0 => 'inc\\dependencies\\templates\\filemanager.tpl',
-      1 => 1407217377,
+      1 => 1407387481,
       2 => 'file',
     ),
   ),
@@ -123,7 +123,7 @@ echo <<<EOD
 <div class="row">
 <div class="btn-group btn-group-vertical col-xs-12">
 <a href="#" class="btn btn-secondary scollections">colecciones</a>
-<a href="#tracks" class="btn btn-cancel stracks">tracks</a>
+<a href="#tracks" class="btn btn-secondary stracks">tracks</a>
 
 <!-- <a href="javascript:;" class="btn btn-cancel">buscar</a> -->
 </div>

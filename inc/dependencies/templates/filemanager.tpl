@@ -86,7 +86,7 @@ echo <<<EOD
 <div class="row">
 <div class="btn-group btn-group-vertical col-xs-12">
 <a href="#" class="btn btn-secondary scollections">colecciones</a>
-<a href="#tracks" class="btn btn-cancel stracks">tracks</a>
+<a href="#tracks" class="btn btn-secondary stracks">tracks</a>
 
 <!-- <a href="javascript:;" class="btn btn-cancel">buscar</a> -->
 </div>

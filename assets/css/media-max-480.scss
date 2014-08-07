@@ -1,0 +1,78 @@
+@media (max-width: 480px){
+    
+    
+.filemanager{
+    .file-item{
+        height: 100%;
+        min-height: 20px;
+        line-height: 20px;
+        padding: 10px 0px;
+    }
+}
+
+
+
+.col-xxs-12, .feed_container *[class*="col-"], ._collections_l *[class*="col-"], .__feature_feed *[class*="col-"]{
+width: 100%;
+display: block;
+float: none;
+}
+
+
+._coverflow ul li ._coverflow_info{
+font-size: 12pt;
+}
+
+._coverflow{
+height: 200px;
+}
+
+
+.collection-item .collection_cover_img, .collection-item .collection_cover_img img{
+-webkit-background-size: 50%;
+background-size: 50%;
+background-position: top center;
+background-repeat: no-repeat;
+}
+
+
+
+
+.collection-item .collection_cover {
+max-height: 100px;
+overflow: hidden;
+}
+
+
+
+._collection_view.jumbotron .btn{
+width: 100%;
+display: block;
+float: none;
+padding-left: 0;
+padding-right: 0;
+text-align: center;
+}
+
+.collection_stats .collection_stats_col{
+font-size: 10pt;
+}
+
+.collection_stats h4{
+font-size: 20pt;
+text-align: center;
+padding: 0;
+margin: 0;
+}
+
+.collection_stats small{
+display: none;
+}
+
+
+.__feature_feed .__feature_oi .__feature_oi_cover .__feature_oi_info ._play_this{
+visibility: hidden;
+}
+
+
+}

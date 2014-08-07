@@ -124,6 +124,9 @@ $app->assign("categorias",$categorias);
 $vcategorias = array("Sin categor&iacute;a", "Mix", "Remix", "Edici&oacute;n");
 $app->assign("vcategorias",$vcategorias);
 
+$generos = array("Bachata","Buenas Epocas","Electronica","Cumbias","Tecno/Trance","Merengue","Reggaeton","Sandungueo","Bolitos R","Electro Latino","Salsa","Reggae","Pop Latino","Rock","Exitos de los 90's","Baladas y Boleros","Rock'N' Roll","Rap & Hip Hop");
+$app->assign("generos",$generos);
+
 
 
 $is_action = isset($_REQUEST['do']) && $_REQUEST['do']!='' ? true : false;

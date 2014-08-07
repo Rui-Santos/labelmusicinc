@@ -148,6 +148,7 @@ echo '
 <a href="'.$link.'cuenta/editar" class="editlink"><small>Editar perfil</small></a></h4>
 {if ($is_moderator=="true")}
 <div class="btn-group btn-group-vertical col-xs-12">
+<a href="'.$link.'" class="btn btn-secondary active"> <span class="meta">inicio</span></a>
 <a href="'.$link.'colecciones/#view/songs/user-'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">canciones</span> <span class="badge">'.$usera['songs'].'</span></a>
 <a href="'.$link.'colecciones/#view/'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">colecciones</span> <span class="badge">'.$usera['collections'].'</span></a>
 <a href="'.$link.'filemanager" class="btn btn-secondary"> <span class="meta">mis archivos</span></a>
@@ -180,7 +181,8 @@ echo '<div class="container">
 <div class="chose col-sm-4 col-md-3 col-xs-6" data-attach="true">
 <a href="" class="curchoice">Actividad <b class="caret text-muted"></b></a>
 <div class="choseoptions"><ul>
-	<li><a href="#view/activity">Actividad</a></li>
+	<li><a href="#view/feed">Actividad</a></li>
+	<li><a href="#view/activity">Comentarios</a></li>
 	<li><a href="#view/songs">Canciones</a></li>
 	<li><a href="#view/collections">Colecciones</a></li>
 </ul></div>

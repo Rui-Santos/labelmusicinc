@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:45:26
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 21:15:01
          compiled from "inc\dependencies\templates\cuenta.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18900536fade4cfd086-92703540%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '439cd334ded3a4fe3cdc623f3ea685fa969051cc' => 
     array (
       0 => 'inc\\dependencies\\templates\\cuenta.tpl',
-      1 => 1407221124,
+      1 => 1407273294,
       2 => 'file',
     ),
   ),
@@ -697,6 +697,7 @@ $data=array(
 	'picture_id'=> $_POST['_cover'],
 	'userid'=> $_POST['userid']
 );
+$usera['profile_picture'] = $link . str_replace('small_', 'thumb_', $_POST['_cover_name']);
 $uc=User::updateUserPic($data);
 if($uc!=false){
 	echo '<div class="container"><span rel="notify" data-notification-message="Tu foto de perfil ha sido cambiada!" data-notification-attributes="true">

@@ -137,10 +137,16 @@ var uploader = new plupload.Uploader({
 		    $('h4._cover_change').remove();
 		    $('.progress_handler').hide();
 		    $('._cover_ img').attr('src', LMI.path + '../' + rs.url);
-		    if(!$('._cover_ img').hasClass('profile')) $('._cover_ img').css({opacity: 0.1})
+		    if(!$('._cover_ img').hasClass('profile') && $('._cover_ch').hasClass('backstretch_image')){
+		    	 $('._cover_ img').css({opacity: 0.1});
+		    }else{
+		    	if(jQuery('.backstretch_image').length==0||jQuery('body').attr('class').indexOf('create')<0){
+			    	$('form').submit();
+		    	}
+		    }
 
 		    
-		    if($('._cover_ch').hasClass('backstretch_image')) $('._cover_ch').backstretch(LMI.path + '../' + rs.url);
+			if($('._cover_ch').hasClass('backstretch_image')||jQuery('.backstretch_image').length>0) $('.backstretch_image').backstretch(LMI.path + '../' + rs.url);
 		    // up.splice();
 
 		    Notifications.create('Imagen subida.', true);

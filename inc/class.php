@@ -142,29 +142,50 @@ class DB{
 }
 
 class Collections{
-	public static function insert($title, $cover, $songs, $songs_id, $songs_id_im, $category){
+
+	public static function addActivity($type=0,$cid=0){
+	global $mysql, $user, $user_id, $collections_link, $collections_link_id;
+	$c=new DB;$c->connect();
+		$q=mysqli_query($mysql, "INSERT INTO activity(active_type, active_content_id, active_user_id,active_check) VALUES('{$type}', '{$cid}', '$user_id', 0)");
+		if($q){
+			return true;
+		}else{
+			return false;
+		}
+		mysqli_close($mysql);
+	}
+
+
+	public static function insert($title, $cover, $songs, $songs_id, $songs_id_im, $category,$genero,$descripcion){
 	global $mysql, $user, $user_id, $collections_link, $collections_link_id;
 	$c=new DB;$c->connect();
 		$title=htmlentities($title);
-		$q=mysqli_query($mysql, "INSERT INTO collections(collection_name, collection_user_id, collection_cover_id, collection_category) VALUES('{$title}', '{$user_id}', '$cover', '{$category}')");
+		$descripcion=htmlentities($descripcion);
+		$q=mysqli_query($mysql, "INSERT INTO collections(collection_name, collection_user_id, collection_cover_id, collection_category, collection_genero, collection_description) VALUES('{$title}', '{$user_id}', '$cover', '{$category}', '{$genero}', '{$descripcion}')");
 		if($q){
 			$collection_ = mysqli_insert_id($mysql);
 			$q_ = "";
 			$sep = '';
+
+			Collections::addActivity(0,$collection_);
+
 			foreach($songs_id as $key=>$value) {
 			    $q_ .= $sep."post_id".' = "'.$value.'"';
 			    $sep = ' OR ';
 			  }
-			$qu=mysqli_query($mysql, "UPDATE posts SET post_collection_id='{$collection_}', post_category_id='{$category}' WHERE {$q_}");
+			$qu=mysqli_query($mysql, "UPDATE posts SET post_collection_id='{$collection_}', post_category_id='{$category}', post_genero='{$genero}' WHERE {$q_}");
 			if($qu){
-			echo 'Tu colecc&oacute;n ha sido guardada!';
+			echo "<span style=\"display: none;\" rel=\"notify\" data-notification-message=\"";
+			echo 'Tu colecc&oacute;n ha sido guardada!"></span>';
 				header('Location: '.$link.$collections_link.$collections_link_id.$collection_);
 				echo '<script>setTimeout(function(){window.location='.$collections_link.$collections_link_id.$collection_.';},1000)</script>';
 			}else{
-			echo 'Lo sentimos pero tu coleccion no puede ser procesada en este momento. Por favor vuelve a intentarlo mas tarde.';
+			echo "<span style=\"display: none;\" rel=\"notify\" data-notification-message=\"";
+			echo 'Lo sentimos pero tu coleccion no puede ser procesada en este momento. Por favor vuelve a intentarlo mas tarde."></span>';
 			}
 		}else{
-			echo 'Lo sentimos pero tu coleccion no puede ser procesada en este momento. Por favor vuelve a intentarlo mas tarde.';
+			echo "<span style=\"display: none;\" rel=\"notify\" data-notification-message=\"";
+			echo 'Lo sentimos pero tu coleccion no puede ser procesada en este momento. Por favor vuelve a intentarlo mas tarde."></span>';
 		}
 		mysqli_close($mysql);
 	}

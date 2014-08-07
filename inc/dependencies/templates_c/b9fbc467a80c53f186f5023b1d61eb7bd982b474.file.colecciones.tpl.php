@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:44:03
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-07 08:59:09
          compiled from "inc\dependencies\templates\colecciones.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24282537ae568844e41-73111217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b9fbc467a80c53f186f5023b1d61eb7bd982b474' => 
     array (
       0 => 'inc\\dependencies\\templates\\colecciones.tpl',
-      1 => 1407221042,
+      1 => 1407401947,
       2 => 'file',
     ),
   ),
@@ -24,15 +24,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'is_show' => 0,
     'show' => 0,
     'is_user' => 0,
-    'link' => 0,
-    'is_moderator' => 0,
     'collections_link' => 0,
     'collections_link_my_collections' => 0,
     'collections_link_new_collection' => 0,
-    'path' => 0,
+    'link' => 0,
     'vcategorias' => 0,
     'cid' => 0,
     'curr_id' => 0,
+    'path' => 0,
+    'is_moderator' => 0,
     'is_id' => 0,
     'id' => 0,
   ),
@@ -49,7 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 require_once('inc/class.php');
 require_once('inc/dependencies/class/perfil.php');
-global $path, $user, $user_id, $collections_link, $collections_link_id, $id, $collections_song_link_id, $is_moderator, $is_user, $categorias, $link, $is_id, $is_action, $action, $country, $bi_day, $bi_month, $bi_year, $is_ajax;
+global $path, $user, $user_id, $collections_link, $collections_link_id, $id, $collections_song_link_id, $is_moderator, $is_user, $categorias, $link, $is_id, $is_action, $action, $country, $bi_day, $bi_month, $bi_year, $is_ajax, $generos;
 if(!$is_ajax) showPart::__showHeader("<title>Crear nueva coleccion</title>");
 echo '<link rel="stylesheet" href="'.$path.'plugins/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />';
 
@@ -74,28 +74,12 @@ echo '
           <img alt="'.$usera['name'].'" class="photo" height="80" src="'.$usera['profile_picture'].'" width="80">
         </div>
         '.$usera['name'].'
-</a> <small class="hidden-xs">&nbsp; crear colecci&oacute;n</small></h1>
+</a> <small class="hidden-xs">&nbsp; crear</small></h1>
 </div>
 </div>
 </div> <!-- main-col -->
 <div class="chose col-sm-3 pull-right col-xs-6">
-<a href="" class="curchoice">Crear colecci&oacute;n</a>
-<div class="choseoptions"><ul>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-cuenta">Perfil</a></li>
-	<?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
-<?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
-">Mis colecciones</a></li>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-filemanager">Archivos</a></li>
-	<li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
-<?php echo $_smarty_tpl->tpl_vars['collections_link_new_collection']->value;?>
-">Crear colecci&oacute;n</a></li>
-	<?php }?>
-	<li><a href="<?php echo $_smarty_tpl->tpl_vars['link']->value;?>
-">Lo ultimo</a></li>
-</ul></div>
+<a href="javascript:;" onclick="jQuery(\'form\').submit()" class="curchoice">Crear colecci&oacute;n</a>
 </div>
 </div>
 </div>
@@ -103,8 +87,8 @@ filemanager">Archivos</a></li>
 
 }
 
-<?php $_block_content = ob_get_clean(); $_block_repeat=false; echo smarty_php_tag(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 
+/*
 <!-- 
 <div class="__intro _affixer" data-spy="affix" data-offset-top="62" data-offset-bottom="0">
 <div class="container"> -->
@@ -155,38 +139,23 @@ filemanager">Archivos</a></li>
 </div>
 </div>
 <div class="_affixer_clone"></div> -->
+*/
+echo '
 
-<div class="container _p_t">
-<h1><a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
-<?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
-">Colecciones</a> <span>Nueva coleccion</span></h1>
-</div>
-
-
-<div class="container _p">
-
-
-<div class="text-left _mB">
-<h2>Crear nueva colecci&oacute;n</h2>
-</div>
 <form class="_collection_create" enctype="multipart/form-data" method="POST" >
-<input type="hidden" name="_frm_collection" id="_frm_collection" value="1" />
+<input type="hidden" name="_frm_collection" id="_frm_collection" value="1" />';
 
-<?php $_smarty_tpl->smarty->_tag_stack[] = array('php', array()); $_block_repeat=true; echo smarty_php_tag(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
-
-
-require_once('inc/class.php');
 if(isset($_REQUEST['_frm_collection'])){
 $num = $_POST['song_count'];
 
-echo '<div class="alert alert-warning alert-dismissable __s_alert_g"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<div class="alert-content">
-		<ol>';
-if($num>0 && isset($_POST['_cover']) && $_POST['_cover']!=""){
+
+if($num>1 && isset($_POST['_cover']) && $_POST['_cover']!=""){
 
 $title = $_POST['_title'];
 $cover = $_POST['_cover'];
 $category = $_POST['cat'];
+$genero = $_POST['genero'];
+$descripcion = $_POST['descripcion'];
 $songs = array();
 $songs_id = array();
 for($i=0; $i<$num; $i++){
@@ -202,110 +171,124 @@ for($i=0; $i<$num; $i++){
 
 $songs_id_im = implode(',',$songs_id);
 
-Collections::insert($title, $cover, $songs, $songs_id, $songs_id_im, $category);
+//print_r($_POST);
+
+Collections::insert($title, $cover, $songs, $songs_id, $songs_id_im, $category,$genero,$descripcion);
+
+}else{
+echo "<span style=\"display: none;\" rel=\"notify\" data-notification-message=\"";
+echo 'No has agregado canciones (mas de 1) y/o ';
+echo 'asegurate de que ya has colocado la portada.';
+echo '"></span>';
+}
+
 
 
 }else{
-echo '<li>Tu coleccio&oacute;n no tiene tracks? Debe contener almenos 1 canci&oacute;n!</li>';
-echo '<li>Asegurate de que has elejido una imagen de portada.</li>';
+echo "<span style=\"display: none;\" rel=\"notify\" data-notification-message=\"Completa el formulario para crear una colecci&oacute;n\" data-notification-attributes=\"1\"></span>";
 }
 
-echo '</ol></div></div>';
 
-
-}else{
-echo '<div class="alert alert-info alert-dismissable __s_alert_g" style="display: none"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<div class="alert-content">
-		Completa el formulario y crea tu colecc&oacute;n
-	</div>
-</div>';
-}
-
+echo '
+<div class="collection_view backstretch_image"data-image="'.$link.'assets/image/blur.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="title-panel col-sm-7 col-md-8 col-xs-12 pull-right">
+				<div class="summary-panel">
+					<div class="btn-group pull-right">
+						<select id="genero" name="genero" class="form-control">
+						<option value="">G&eacute;nero</option>';
+							for($g=0; $g<count($generos); $g++){
+								echo '<option value="'.$g.'">'.$generos[$g].'</option>';
+							}
+						echo '</select>';
 <?php $_block_content = ob_get_clean(); $_block_repeat=false; echo smarty_php_tag(array(), $_block_content, $_smarty_tpl, $_block_repeat); } array_pop($_smarty_tpl->smarty->_tag_stack);?>
 
+				</div>
 
+					<h2>
+						<a href="<?php echo $_smarty_tpl->tpl_vars['collections_link']->value;?>
+<?php echo $_smarty_tpl->tpl_vars['collections_link_my_collections']->value;?>
+"><i class="ion-folder"></i></a> 
+						<span>Nueva coleccion</span>
+					</h2>
+				</div>
+				<div class="collection-info">
+					<!-- <h1>Demostremos borrachos mix</h1> -->
+					<input type="text" class="form-control" id="_title" name="_title" value="Sin t&iacute;tulo" />
+				</div>
 
-<div class="row">
-<div class="col-sm-6">
-
-
-<div class="col-sm-12">
-<div class="form-group">
-	<label class="control-label" for="_title">Nombre de la colecci&oacute;n</label>
-	<input type="text" class="form-control" id="_title" name="_title" value="Sin t&iacute;tulo" />
-	</div>
-
-<span class="clearfix"></span>
-</div>
-<span class="clearfix"></span>
-<br />
-
-
-<span class="clearfix"></span>
-<br />
-
-<div class="_cover_ch">
-<div class="col-sm-12 _v_a text-center">
-<div class="_v_a_c">
-<h4 class="_cover_change">Elige una imagen de portada</h4>
-
-<div id="cover_upload">
-<div class="__file_controls _choose">
-<a href="javascript:;" class="btn btn-primary" id="pickfiles">Selecciona un archivo</a>
-</div>
-
-<div class="progress_handler">
-	<div class="progress_bg">
-		<div class="progress_percent"></div>
-	</div>
-</div>
-
-</div>
-
-
-</div>
-</div>
-<div class="col-sm-12 _cover_ _v_a text-center">
-<img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-image/0_.png" class="img-rounded" />
-<input type="hidden" name="_cover" id="_cover_value" />
-</div>
-
-<span class="clearfix"></span>
-
-</div>
-
-<br /><br />
-
-
-<div class="form-group">
-<label class="control-label" for="cat">Categoria:</label>
-<select id="cat" name="cat" class="form-control">
-<?php  $_smarty_tpl->tpl_vars['curr_id'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['curr_id']->_loop = false;
+				<span class="clearfix"></span>
+			</div>
+			<div class="info-panel col-sm-5 col-md-4 col-xs-12">
+				<div class="info-container">
+					<select id="cat" name="cat" class="form-control">
+						<?php  $_smarty_tpl->tpl_vars['curr_id'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['curr_id']->_loop = false;
  $_smarty_tpl->tpl_vars['cid'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['vcategorias']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['curr_id']->key => $_smarty_tpl->tpl_vars['curr_id']->value) {
 $_smarty_tpl->tpl_vars['curr_id']->_loop = true;
  $_smarty_tpl->tpl_vars['cid']->value = $_smarty_tpl->tpl_vars['curr_id']->key;
 ?>
-  <option value="<?php echo $_smarty_tpl->tpl_vars['cid']->value;?>
+						  <option value="<?php echo $_smarty_tpl->tpl_vars['cid']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['curr_id']->value;?>
 </option>
-<?php } ?>
-</select>
+						<?php } ?>
+					</select>
+
+
+					<div class="_cover_ch">
+						<div class="col-sm-12 _v_a text-center">
+							<div class="_v_a_c">
+								<h4 class="_cover_change">Elige una imagen de portada</h4>
+
+								<div id="cover_upload">
+									<div class="__file_controls _choose">
+										<a href="javascript:;" class="btn btn-primary" id="pickfiles">Selecciona un archivo</a>
+									</div>
+								<div class="progress_handler">
+									<div class="progress_bg">
+										<div class="progress_percent"></div>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+					<div class="col-sm-12 _cover_ _v_a text-center">
+						<img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+image/0_.png" class="img-rounded" />
+						<input type="hidden" name="_cover" id="_cover_value" />
+					</div>
+
+					<span class="clearfix"></span>
+					
+					</div>
+				</div>
+			</div>
+			<span class="clearfix"></span>
+		</div>
+	</div>
 </div>
 
 
 
-<span class="clearfix"></span>
+
+<div class="container _p collection-view-contents">
+
+<div class="row">
+<div class="col-sm-5 col-md-4 sidebar-panel">
+
+<div class="form-group">
+<h2>informacion</h2>
+<textarea class="form-control border-control" name="descripcion" id="descripcion" rows="10"></textarea>
 </div>
 
-
-<div class="col-sm-6">
+</div>
+<div class="col-sm-7 col-md-8">
 
 <div class="_song-list">
 
-<h3>Agrega tracks a la colecci&oacute;n</h3>
+<h2>Tracks <small class="text-muted">m&aacute;ximo 12</small></h2>
 
 <div class="alert alert-warning alert-dismissable __s_alert" style="display: none"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	<div class="alert-content">
@@ -316,23 +299,26 @@ $_smarty_tpl->tpl_vars['curr_id']->_loop = true;
 <div class="html5_uploader" id="song"></div>
 </div>
 
+<span class="clearfix"></span>
+<div class="addSpace"></div>
+
 </div>
+</div>
+
 
 <span class="clearfix"></span>
 
-<div class="col-sm-12">
-<button class="btn btn-success" type="submit">Guardar colecci&oacute;n</button>
+<div class="form-group text-center">
+	<button class="btn btn-success btn-lg" type="submit">crear colecci&oacute;n</button>
 </div>
 
-<span class="clearfix"></span>
 
 <div class="addSpace"></div>
+
+
 </div>
 
 </form>
-
-</div>
-
 
 
 
@@ -1296,10 +1282,10 @@ include('inc/dependencies/templates/notfound.tpl');
 <?php $_smarty_tpl->smarty->_tag_stack[] = array('php', array()); $_block_repeat=true; echo smarty_php_tag(array(), null, $_smarty_tpl, $_block_repeat);while ($_block_repeat) { ob_start();?>
 
 require_once('inc/class.php');
-global $path, $link, $user, $user_id, $collections_link, $collections_link_id, $id, $collections_song_link_id, $is_moderator, $is_user, $is_ajax;
+require_once('inc/dependencies/class/perfil.php');
+global $path, $user, $user_id, $collections_link, $collections_link_id, $id, $collections_song_link_id, $is_moderator, $is_user, $categorias, $link, $is_id, $is_action, $action, $country, $bi_day, $bi_month, $bi_year, $is_ajax, $generos;
+
 $collection = Collections::fetch($id);
-
-
 
 if($collection!=false){
 
@@ -1310,9 +1296,50 @@ $add_to_list = '';
 }
 
 $published = date('d\.m\.Y', strtotime($collection['published']));
-
-
 if(!$is_ajax) showPart::__showHeader("<title>".$collection['name']."</title>");
+
+
+
+
+
+$loadbyid = false;
+$loadowner = true;
+$sid=0;
+$sid=$user_id;
+$usera=User::getUserInfo($user_id,true);
+if($usera!=false){
+
+$loadowner = $loadbyid && $sid==$usera['id'] ? true : $loadowner;
+echo '
+<div class="__intro _affixer affix-top" data-spy="affix" data-offset-top="62" data-offset-bottom="0">
+<div id="profilecontent" class="container compact">
+<div class="row">
+<div class="col-xs-6">
+<div id="main" class="main-full profile-container self">
+  <div class="profile-head">
+    <h1>
+      <a href="'.$link.'@'.$sid.'" class="url" rel="contact" title="'.$usera['name'].'">
+        <div class="hidden-xs">
+          <img alt="'.$usera['name'].'" class="photo" height="80" src="'.$usera['profile_picture'].'" width="80">
+        </div>
+        '.$usera['name'].'
+</a> <small class="hidden-xs">&nbsp; crear</small></h1>
+</div>
+</div>
+</div> <!-- main-col -->
+<div class="chose col-sm-3 pull-right col-xs-6">
+<a href="javascript:;" onclick="jQuery(\'form\').submit()" class="curchoice">Crear colecci&oacute;n</a>
+</div>
+</div>
+</div>
+</div><div class="_affixer_clone" style="height: 70px"></div><span class="clearfix"></span>';
+
+}
+
+
+
+
+
 
 $downloads = $collection["downloads"];
 

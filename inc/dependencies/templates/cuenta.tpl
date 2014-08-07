@@ -611,6 +611,7 @@ $data=array(
 	'picture_id'=> $_POST['_cover'],
 	'userid'=> $_POST['userid']
 );
+$usera['profile_picture'] = $link . str_replace('small_', 'thumb_', $_POST['_cover_name']);
 $uc=User::updateUserPic($data);
 if($uc!=false){
 	echo '<div class="container"><span rel="notify" data-notification-message="Tu foto de perfil ha sido cambiada!" data-notification-attributes="true">

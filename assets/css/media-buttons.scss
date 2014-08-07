@@ -1,0 +1,257 @@
+$green: #83c04a; //green
+$orange: #ee7b49; //orange
+$blue: #3298db; //blue
+$purple: #ae4b88; //purple
+$yellow: #e3c235; //yellow
+$gray: #c5cad3; //gray
+
+.btn,.button{
+font: normal normal 700 13px/13px "Open Sans",Arial,sans-serif;
+text-transform: uppercase;
+-webkit-font-smoothing: antialiased;
+}
+
+
+.btn,.button{
+border-width: 2px;
+border-radius: 2px;
+padding: 0px 22px;
+height: 37px;
+line-height: 35px;
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+-ms-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all 0.3s ease;
+}
+
+h1,h2,h3{
+  font-family: 'Open Sans', tahoma, serif, arial;
+  -webkit-font-smoothing: antialiased;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 36px;
+  line-height: 32px;
+  padding: 0 20px;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border: 2px solid;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background-image: -webkit-radial-gradient(center top, farthest-corner, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  background-image: -moz-radial-gradient(center top, farthest-corner, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  background-image: -o-radial-gradient(center top, farthest-corner, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(center top, farthest-corner, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+}
+.button:hover:before {
+  background-image: -webkit-radial-gradient(farthest-corner, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+  background-image: -moz-radial-gradient(farthest-corner, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+  background-image: -o-radial-gradient(farthest-corner, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+  background-image: radial-gradient(farthest-corner, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+}
+.button,.btn{
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+}
+.button:active,.btn:active,.btn.active,.button.active {
+  box-shadow: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.button:active:before {
+  content: none;
+}
+
+.button:hover,.button:focus,.alert{
+color: #fff;
+text-decoration: none;
+text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+outline: none;
+}
+
+
+.button-white{
+background: transparent;
+border-color: white;
+}
+.button-white:hover, .button-white:active,.button-white:focus{
+  background: white;
+  color: #2dbae7;
+}
+
+
+.button-green, .btn-success, .alert-success {
+background-color: $green;
+border-color: $green;
+}
+.button-green{
+  background-color: transparent;
+  color: $green;
+  text-shadow: none;
+}
+.button-green:active,.button-green:hover,.button-green:focus, .btn-success:hover, .btn-success:active, .btn-success:focus {
+  background: lighten($green, 5%);
+  border-color: lighten($green, 5%);
+}
+
+.button-green.active, .btn-success.active, .open .dropdown-toggle.btn-success{
+  box-shadow: none;
+  background: darken($green, 5%);
+  border-color: darken($green, 5%);
+}
+
+.button-red, .btn-danger, .alert-danger {
+  background: #ff5534;
+  border-color: #ff5534;
+}
+.button-red{
+  background-color: transparent;
+  color: #ff5534;
+  text-shadow: none;
+}
+.button-red:active,.button-red:hover,.button-red:focus,.btn-danger:active,.btn-danger:hover,.btn-danger:focus {
+  background: #d9482b;
+  border-color: #d9482b;
+}
+
+.button-blue,.btn-info, .alert-info {
+  background: $blue;
+  border-color: $blue;
+}
+.button-blue{
+  background-color: transparent;
+  color: $blue;
+  text-shadow: none;
+}
+.button-blue:active, .button-blue:hover,.btn-info:active, .btn-info:hover, .btn-info:focus, .button-blue:focus {
+  background: lighten($blue, 5%);
+  border-color: lighten($blue, 5%);
+}
+
+.button-orange, .btn-warning, .alert-warning {
+  background: $orange;
+  border-color: $orange;
+}
+
+.btn-cancel{
+background-color: $gray;
+border-color: $gray;
+color: #fff;
+}
+
+.btn-cancel:hover,.btn-cancel:active,.btn-cancel:focus{
+background-color: lighten($gray, 5%);
+border-color: lighten($gray, 5%);
+color: #fff;
+}
+
+
+.button-orange{
+  background-color: transparent;
+  color: $orange;
+  text-shadow: none;
+}
+.button-orange:active,.button-orange:hover,.button-orange:focus,.btn-warning:active,.btn-warning:hover,.btn-warning:focus {
+  background: $orange;
+  border-color: $orange;
+}
+
+.button-pink {
+  background: #fe4a65;
+  border-color: #fe4a65;
+}
+.button-pink{
+  background-color: transparent;
+  color: #fe4a65;
+  text-shadow: none;
+}
+.button-pink:active,.button-pink:hover ,.button-pink:focus {
+  background: #d23a51;
+  border-color: #d23a51;
+}
+
+.button-gray,.btn-secondary {
+  background: $gray;
+  border-color: $gray;
+  color: #fff;
+}
+.button-gray{
+  background-color: transparent;
+  color: $gray;
+  text-shadow: none;
+}
+.button-gray:active,.button-gray:hover,.button-gray:focus, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+  background: lighten($gray, 5%);
+  border-color: lighten($gray, 5%);
+  color: #fff;
+}
+
+.btn-gray.active,.button-gray.active,.btn-secondary.active{
+  background: darken($gray, 10%);
+  border-color: darken($gray, 10%);
+}
+
+
+.btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus{
+  color: #adadad;
+  background-color: transparent;
+  border-color: transparent;
+  text-shadow: none;
+}.btn-default{
+  background-color: transparent;
+  border-color: transparent;
+}.btn-default:hover, .btn-default:active, .btn-default:focus{
+  color: #0192ff;
+}
+
+
+.button-darkblue, .btn-primary {
+  background: $blue;
+  border-color: $blue;
+  box-shadow: none;
+}
+.button-darkblue{
+  background-color: transparent;
+  color: $blue;
+  text-shadow: none;
+}
+.button-darkblue:active, .button-darkblue:hover, .button-darkblue:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background: lighten($blue, 5%);
+  border-color: lighten($blue, 5%);
+}
+
+.button-purple {
+  background: $purple;
+  border-color: $purple;
+}
+.button-purple{
+  background-color: transparent;
+  color: $purple;
+  text-shadow: none;
+}
+.button-purple:active, .button-purple:hover, .button-purple:focus {
+  background: lighten($purple, 5%);
+  border-color: lighten($purple, 5%);
+}

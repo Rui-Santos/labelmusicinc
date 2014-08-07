@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-08-05 06:40:39
+<?php /* Smarty version Smarty-3.1.18, created on 2014-08-07 05:01:43
          compiled from "inc\dependencies\templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28211536ce5596dc544-52236376%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c15ae3a8012a3d4149e868764f97d9b3e49fd23' => 
     array (
       0 => 'inc\\dependencies\\templates\\index.tpl',
-      1 => 1407220837,
+      1 => 1407387701,
       2 => 'file',
     ),
   ),
@@ -188,6 +188,7 @@ filemanager">Archivos</a></li>
 <a href="'.$link.'cuenta/editar" class="editlink"><small>Editar perfil</small></a></h4>
 <?php if (($_smarty_tpl->tpl_vars['is_moderator']->value=="true")) {?>
 <div class="btn-group btn-group-vertical col-xs-12">
+<a href="'.$link.'" class="btn btn-secondary active"> <span class="meta">inicio</span></a>
 <a href="'.$link.'colecciones/#view/songs/user-'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">canciones</span> <span class="badge">'.$usera['songs'].'</span></a>
 <a href="'.$link.'colecciones/#view/'.$usera['id'].'" class="btn btn-secondary"> <span class="meta">colecciones</span> <span class="badge">'.$usera['collections'].'</span></a>
 <a href="'.$link.'filemanager" class="btn btn-secondary"> <span class="meta">mis archivos</span></a>
@@ -221,7 +222,8 @@ echo '<div class="container">
 <div class="chose col-sm-4 col-md-3 col-xs-6" data-attach="true">
 <a href="" class="curchoice">Actividad <b class="caret text-muted"></b></a>
 <div class="choseoptions"><ul>
-	<li><a href="#view/activity">Actividad</a></li>
+	<li><a href="#view/feed">Actividad</a></li>
+	<li><a href="#view/activity">Comentarios</a></li>
 	<li><a href="#view/songs">Canciones</a></li>
 	<li><a href="#view/collections">Colecciones</a></li>
 </ul></div>
